@@ -13,12 +13,17 @@ else
 fi
 
 # Setup config and run
-if [ -e /var/lib/aide/aide.db.gz ]; then
-    echo "Updating database..."
-    aide --update
-else
+chattr +i /etc/aide.config
+chmod 444 /etc/aide.config
+echo "The MD5sum for the aide.conf file is ${md5sum /etc/aide.conf}"
+echo "You may want to write that down"
+if [  ! -e /var/lib/aide/aide.db.gz ]; then
     aide --init
+    mv -vf /var/lib/aide/aide.db.new.gz /var/lib/aide/aide.db.gz
 fi
-mv -vf /var/lib/aide/aide.db.new.gz /var/lib/aide/aide.db.gz
-echo "Running check..."
-aide --check
+echo "Running checks..."
+while : 
+do
+aide --check 
+sleep 90
+done
