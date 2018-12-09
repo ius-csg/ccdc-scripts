@@ -13,17 +13,22 @@ else
 fi
 
 # Setup config and run
-chattr +i /etc/aide.config
-chmod 444 /etc/aide.config
-echo "The MD5sum for the aide.conf file is ${md5sum /etc/aide.conf}"
+chattr +i /etc/aide.conf
+chmod 444 /etc/aide.conf
+md5sum /etc/aide.conf > $confsum
+echo "The MD5sum for the aide.conf file is ${confsum}"
 echo "You may want to write that down"
 if [  ! -e /var/lib/aide/aide.db.gz ]; then
     aide --init
     mv -vf /var/lib/aide/aide.db.new.gz /var/lib/aide/aide.db.gz
 fi
 echo "Running checks..."
-while : 
+while :
 do
-aide --check 
-sleep 90
+    aide --check
+    sleep 90
+    if [ $confsum != md5sum /etc/aide.conf ]; then
+        echo "The AIDE config file has been modified! You're in trouble."
+        exit 2
+    fi
 done
