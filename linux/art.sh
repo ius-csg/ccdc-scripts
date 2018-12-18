@@ -30,5 +30,6 @@ sed -i 's/HONEYPOT_AUTOACCEPT="ON"/HONEYPOT_AUTOACCEPT="OFF"/g' config
 if [ $opt == t ]; then
     tmux
     tmux attach \;  new-window python artillery.py
+  else 
+      python artillery.py &
 fi
-python artillery.py &
