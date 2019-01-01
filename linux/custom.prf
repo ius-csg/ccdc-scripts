@@ -1,0 +1,17 @@
+# This is a Lynis security auditing profile intended for use during CCDC.
+# Using this in production may be a very bad idea.
+# That being said, place this file in the place indicated by lynis show profiles to use
+
+# The following files should have the listed permissions, or throw a warning 
+permfile:/etc/fstab:rw-r--r--:root:-:NOTICE:
+permfile:/etc/shadow:rw-------:root:-:WARN:
+
+# Skip tests that we don't care about
+skip-test=BOOT-5122 # Grub pass
+skip-test=TOOL-5002 # Automation/Docker
+skip-test=CONT-8102 
+skip-test=BANN-7130 # Banners
+skip-test=BANN-7128
+skip-test=BANN-7124
+skip-test=BANN-7126
+
