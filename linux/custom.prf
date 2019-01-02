@@ -14,4 +14,5 @@ skip-test=BANN-7130 # Banners
 skip-test=BANN-7128
 skip-test=BANN-7124
 skip-test=BANN-7126
+skip-test=FILE-6310 # Full file systems
 
