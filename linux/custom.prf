@@ -1,7 +1,7 @@
 # This is a Lynis security auditing profile intended for use during CCDC.
 # Using this in production may be a very bad idea.
 # That being said, place this file in the place indicated by lynis show profiles to use
-
+profile-name=IUSCSG CCDC profile
 # The following files should have the listed permissions, or throw a warning 
 permfile:/etc/fstab:rw-r--r--:root:-:NOTICE:
 permfile:/etc/shadow:rw-r-----:root:shadow:WARN:
