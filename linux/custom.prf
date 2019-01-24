@@ -17,6 +17,6 @@ skip-test=BANN-7126
 skip-test=FILE-6310 # Full file systems
 skip-test=HRDN-7222 # Compiler access 
 skip-test=STRG-1840 # FireWire/USB drivers
-skip-text=STRG-1846
+skip-test=STRG-1846
 skip-test=AUTH-9286 # Password aging 
 
