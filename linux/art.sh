@@ -8,7 +8,7 @@ while getopts 't' opt; do
     if [ opt == t ]; then
         if [ -e /usr/bin/apt-get ]; then #Check path for APT later
             apt-get install tmux -y
-            elif [ -e /usr/bin/yum ]; then #CentOS
+            elif [ -e /usr/bin/yum || -e /bin/yum ]; then #CentOS || Fedora < 22
             yum -y install tmux
             elif [ -e /usr/bin/dnf ]; then #Fedora
             dnf -y install tmux
@@ -31,5 +31,5 @@ if [ $opt == t ]; then
     tmux
     tmux attach \;  new-window python artillery.py
   else 
-      python artillery.py &
+      echo 'CWD to artillery, and run python artillery.py to start'
 fi
