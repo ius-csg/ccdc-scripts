@@ -1,4 +1,5 @@
 #!/bin/bash
+systemctl stop firewalld
 systemctl mask firewalld
 iptables -F
 iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
